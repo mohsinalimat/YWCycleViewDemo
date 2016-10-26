@@ -7,9 +7,10 @@
 //
 
 import UIKit
-private let KMargin = CGFloat(8)
 class YWCycleViewCell: UICollectionViewCell {
     
+    /// 文字标题间距
+    private let KMargin = CGFloat(8)
     /// 轮播图片
     lazy var imageView = UIImageView()
     /// 轮播标题
