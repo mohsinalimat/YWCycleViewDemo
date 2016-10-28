@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     lazy var tableView = UITableView()
     lazy var modelMArr = [YWCycleModel]()
+    var cycleView : YWCycleView?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.frame = view.bounds
@@ -19,8 +20,16 @@ class ViewController: UIViewController {
         view.addSubview(tableView)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        
-        let cycleView = YWCycleView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 200))
+        cycleView = YWCycleView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 250))
+        guard let cycleView = cycleView else {
+            return
+        }
+        cycleView.delegate = self
+        tableView.tableHeaderView = cycleView
+        requestData()
+    }
+    
+    func requestData() {
         let tempArr = [["title":"中国奥运军团三金回顾","imageUrl":"http://pic33.nipic.com/20130916/3420027_192919547000_2.jpg"],
                        ["title":"《封神传奇》进世界电影特效榜单？山寨的!","imageUrl":"http://imgstore.cdn.sogou.com/app/a/100540002/503008.png"],
                        ["title":"奥运男子4x100自由泳接力 菲尔普斯","imageUrl":"http://i1.hexunimg.cn/2014-08-15/167580248.jpg"],
@@ -31,9 +40,10 @@ class ViewController: UIViewController {
             model.title = dic["title"]
             modelMArr.append(model)
         }
+        guard let cycleView = cycleView else {
+            return
+        }
         cycleView.dataArr = modelMArr
-        cycleView.delegate = self
-        tableView.tableHeaderView = cycleView
     }
 }
 

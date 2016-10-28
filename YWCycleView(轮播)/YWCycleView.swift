@@ -83,7 +83,11 @@ class YWCycleView: UIView {
     }
     
     func beginScroll() {
-        self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(scrollAction), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(scrollAction), userInfo: nil, repeats: true)
+        guard let timer = timer else {
+            return
+        }
+        RunLoop.main.add(timer, forMode: .commonModes)
     }
     
     @objc private func scrollAction() {
