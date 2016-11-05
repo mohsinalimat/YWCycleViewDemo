@@ -16,11 +16,7 @@ private let CycleViewCell = "YWCycleViewCell"
 class YWCycleView: UIView {
     weak var delegate: YWCycleViewDelegate?
     lazy var collectionView = UICollectionView()
-    var dataArr: [YWCycleModel]?{
-        didSet {
-            addPageControl()
-        }
-    }
+    var dataArr: [YWCycleModel]?
     fileprivate lazy var pageControl = UIPageControl()
     fileprivate var timer: Timer?
     
@@ -59,10 +55,13 @@ class YWCycleView: UIView {
         collectionView.dataSource = self
         addSubview(collectionView)
         collectionView.register(YWCycleViewCell.self, forCellWithReuseIdentifier: CycleViewCell)
+        DispatchQueue.main.async {
+            self.collectionView.scrollToItem(at: IndexPath.init(row: 0, section: 5000), at: .right, animated: false)
+            self.addPageControl()
+        }
     }
     
     func addPageControl() {
-        collectionView.scrollToItem(at: IndexPath.init(row: 0, section: 5000), at: .right, animated: false)
         pageControl = UIPageControl(frame: CGRect(x: 0, y: bounds.height - 20, width: bounds.width, height: 20))
         guard let dataArr = dataArr else {
             return

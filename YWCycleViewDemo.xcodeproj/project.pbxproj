@@ -124,8 +124,8 @@
 			children = (
 				7B7B7D291DC0DEC7001FD2C4 /* AppDelegate.swift */,
 				7B7B7D2B1DC0DEC7001FD2C4 /* ViewController.swift */,
-				7B7B7D2D1DC0DEC7001FD2C4 /* Main.storyboard */,
 				7B7B7D301DC0DEC7001FD2C4 /* Assets.xcassets */,
+				7B7B7D2D1DC0DEC7001FD2C4 /* Main.storyboard */,
 				7B7B7D321DC0DEC7001FD2C4 /* LaunchScreen.storyboard */,
 				7B7B7D351DC0DEC7001FD2C4 /* Info.plist */,
 			);
